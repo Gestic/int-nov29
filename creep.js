@@ -37,6 +37,7 @@ var mod = {
             pioneer: require('./creep.behaviour.pioneer'),
             privateer: require('./creep.behaviour.privateer'),
             ranger: require('./creep.behaviour.ranger'),
+            hopper: require('./creep.behaviour.hopper'),
             upgrader: require('./creep.behaviour.upgrader'),
             warrior: require('./creep.behaviour.warrior'),
             worker: require('./creep.behaviour.worker')
@@ -51,6 +52,7 @@ var mod = {
             pioneer: require('./creep.setup.pioneer'),
             privateer: require('./creep.setup.privateer'),
             ranger: require('./creep.setup.ranger'),
+            hopper: require('./creep.setup.hopper'),
             upgrader: require('./creep.setup.upgrader'),
             warrior: require('./creep.setup.warrior'),
             worker: require('./creep.setup.worker')
