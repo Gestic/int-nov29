@@ -6,7 +6,7 @@ var mod = {
     run: function(tower){
         if(tower) {
             // TODO: convert to action pattern  
-            /*if( tower.room.casualties.length > 0) {
+            if( tower.room.casualties.length > 0) {
                 // Heal
                 var target = tower.room.casualties[0];
                 if(target.hitsMax - target.hits >= 400 || !tower.room.situation.invasion) {
@@ -16,7 +16,7 @@ var mod = {
                     target.towers.push(tower.id);
                     return;
                 }
-            }*/
+            }
             if( tower.room.structures.urgentRepairable.length > 0 ) { 
                 // urgent Repair
                 var target = tower.room.structures.urgentRepairable[0]; 
