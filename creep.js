@@ -40,7 +40,7 @@ var mod = {
             upgrader: require('./creep.behaviour.upgrader'),
             warrior: require('./creep.behaviour.warrior'),
             worker: require('./creep.behaviour.worker'),
-            robber: require('./creep.behaviour.robber')
+            robber: require('./creep.behaviour.robber')           
         };
         Creep.setup = {
             claimer: require('./creep.setup.claimer'),
@@ -55,7 +55,7 @@ var mod = {
             upgrader: require('./creep.setup.upgrader'),
             warrior: require('./creep.setup.warrior'),
             worker: require('./creep.setup.worker'),
-            robber: require('./creep.setup.robber')
+            robber: require('./creep.setup.robber')          
         };
         Creep.loop = function(){
             var run = creep => creep.run();
