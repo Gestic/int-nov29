@@ -9,7 +9,7 @@ setup.default = {
     minEnergyAvailable: 0.4,
     //maxMulti: setup.maxMulti,
     maxMulti: 10,
-    maxCount: 3, 
+    maxCount: 5, 
     maxWeight: 2000,
     minMulti: (room) => (room.controller.level)
 };
