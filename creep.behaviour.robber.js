@@ -123,8 +123,7 @@ module.exports = {
         if( creep.sum < creep.carryCapacity*0.4 ) {
             // calc by distance to home room
             let validColor = flagEntry => (
-                (flagEntry.color == FLAG_COLOR.invade.exploit.color && flagEntry.secondaryColor == FLAG_COLOR.invade.exploit.secondaryColor) ||
-                (flagEntry.color == FLAG_COLOR.invade.robbing.color && flagEntry.secondaryColor == FLAG_COLOR.invade.robbing.secondaryColor)
+                (flagEntry.color == FLAG_COLOR.invade.robbingHaul.color && flagEntry.secondaryColor == FLAG_COLOR.invade.robbingHaul.secondaryColor)
             );
             let flag = FlagDir.find(validColor, Game.rooms[creep.data.homeRoom].controller.pos, false, FlagDir.exploitMod, creep.name);
             // new flag found
