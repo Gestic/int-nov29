@@ -48,8 +48,8 @@ module.exports = {
                 return;
             else {
                 // no new flag
-                // behave as worker
-                Creep.behaviour.worker.nextAction(creep);
+                // behave as hauler
+                Creep.behaviour.hauler.nextAction(creep);
                 return;
             }
         }
