@@ -130,14 +130,14 @@ module.exports = {
             if( flag ) {
                 // travelling
                 if( Creep.action.travelling.assign(creep, flag) ) {
-                    Population.registerCreepFlag(creep, flag);
+                    //Population.registerCreepFlag(creep, flag);
                     return true;
                 }
             }
         }
         // no new flag
         // go home
-        Population.registerCreepFlag(creep, null);
+       // Population.registerCreepFlag(creep, null);
         Creep.action.travelling.assign(creep, Game.rooms[creep.data.homeRoom].controller);
         return false;
     }
