@@ -49,6 +49,8 @@ module.exports = {
             else {
                 // no new flag
                 // behave as hauler
+                //ToDo mimic hauler not be it
+                //ToDo create own robbing action based on original but wihtout work part and skips rampart structures
                 Creep.behaviour.hauler.nextAction(creep);
                 return;
             }
