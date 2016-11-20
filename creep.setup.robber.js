@@ -24,9 +24,9 @@ setup.default = {
     multiBody: [CARRY, CARRY, MOVE], 
     minAbsEnergyAvailable: 150, 
     minEnergyAvailable: 0.4,
-    maxMulti: 10,
+    maxMulti: 16,
     maxCount: setup.maxCount, 
-    maxWeight: 2000,
+    maxWeight: 2400,
     minMulti: (room) => (room.controller.level)
 };
 setup.RCL = {
