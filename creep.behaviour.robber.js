@@ -49,8 +49,6 @@ module.exports = {
             else {
                 // no new flag
                 // behave as hauler
-                //ToDo mimic hauler not be it
-                //ToDo create own robbing action based on original but wihtout work part and skips rampart structures
                 Creep.behaviour.hauler.nextAction(creep);
                 return;
             }
@@ -81,7 +79,7 @@ module.exports = {
                     else {
                         // harvesting or picking
                         var actions = [
-                            Creep.action.robbing
+                            Creep.action.robbingHaul
                         ];
                         // TODO: Add extracting (if extractor present) ?
                         for(var iAction = 0; iAction < actions.length; iAction++) {   
