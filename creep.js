@@ -25,6 +25,7 @@ var mod = {
             upgrading: require('./creep.action.upgrading'), 
             withdrawing: require('./creep.action.withdrawing'),
             robbing:require('./creep.action.robbing'),
+            robbingHaul:require('./creep.action.robbingHaul'),
             reallocating:require('./creep.action.reallocating')
         };
         Creep.behaviour = {
