@@ -108,6 +108,9 @@ action.run = {
             if( creep.target instanceof Flag ){
                 creep.drive( creep.target.pos, 1, 1, Infinity);
                 return;
+            } else if( creep.target instanceof ConstructionSite ){
+                creep.drive( creep.target.pos, 0, 0, Infinity);
+                return;
             }        
             creep.moveTo(creep.target, {reusePath: 0});
         }
@@ -116,10 +119,13 @@ action.run = {
     }, 
     ranger: function(creep){ 
         if( !creep.flee ){    
-            if( creep.target instanceof Flag){
+            if( creep.target instanceof Flag ){
                 creep.drive( creep.target.pos, 1, 1, Infinity);
                 return;
-            }
+            } else if( creep.target instanceof ConstructionSite ){
+                creep.drive( creep.target.pos, 0, 0, Infinity);
+                return;
+            }  
             var range = creep.pos.getRangeTo(creep.target);
             if( range > 3 ){
                 creep.moveTo(creep.target, {reusePath: 0});
@@ -141,6 +147,65 @@ action.run = {
         }
         if(targets.length > 0){
             creep.attackingRanged = creep.rangedAttack(targets[0]) == OK;
+        }
+    }, 
+    warrior: function(creep){
+        let range = creep.pos.getRangeTo(creep.target);
+        let hasAttack = creep.hasActiveAttackPart();
+        let hasRangedAttack = creep.hasActiveRangedAttackPart();
+        if( !creep.flee ) {
+            if( hasAttack ){
+                if( creep.target instanceof Flag ){
+                    creep.drive( creep.target.pos, 1, 1, Infinity);
+                    return;
+                } else if( creep.target instanceof ConstructionSite ){
+                    creep.drive( creep.target.pos, 0, 0, Infinity);
+                    return;
+                }  
+                let path = creep.room.findPath(creep.pos, creep.target.pos);
+                if( path && path.length > 0 ) creep.move(path[0].direction);
+            } else if( hasRangedAttack ) {
+                if( creep.target instanceof Flag ){
+                    creep.drive( creep.target.pos, 1, 1, Infinity);
+                    return;
+                } else if( creep.target instanceof ConstructionSite ){
+                    creep.drive( creep.target.pos, 0, 0, Infinity);
+                    return;
+                }  
+                if( range > 3 ){
+                    creep.moveTo(creep.target, {reusePath: 0});
+                }
+                if( range < 3 ){
+                    //creep.move(creep.target.pos.getDirectionTo(creep));
+                    creep.fleeMove();
+                }
+            } else creep.flee = true;
+        }
+        // attack
+        if( hasAttack ){
+            let attacking = creep.attack(creep.target);        
+            if( attacking == ERR_NOT_IN_RANGE ) {
+                let targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 1);
+                if( targets.length > 0)
+                    creep.attacking = creep.attack(targets[0]) == OK;
+            } else creep.attacking = attacking == OK;
+        }
+        // attack ranged
+        if( hasRangedAttack ) {
+            let targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
+            if(targets.length > 2) { // TODO: precalc damage dealt
+                if(CHATTY) creep.say('MassAttack');
+                creep.attackingRanged = creep.rangedMassAttack() == OK;
+                return;
+            }
+            let range = creep.pos.getRangeTo(creep.target);
+            if( range < 4 ) {
+                creep.attackingRanged = creep.rangedAttack(creep.target) == OK;
+                return;
+            }
+            if(targets.length > 0){
+                creep.attackingRanged = creep.rangedAttack(targets[0]) == OK;
+            }
         }
     }
 };
